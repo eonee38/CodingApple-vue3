@@ -166,11 +166,17 @@ export default {
   created() {
     // 서버에서 데이터 가져오는 코드를 작성
   },
-  mounted() { // lifecycle hook
-    setTimeout(() => {
-      this.showDiscount = false;
-    }, 2000);
+  // mounted() { // lifecycle hook
+  //   setTimeout(() => {
+  //     this.showDiscount = false;
+  //   }, 2000);
+  // },
+  mounted() {
+  setInterval(() => {
+    
+    }, 1000); // 1초 마다 내부 코드 실행
   },
+
   beforeMount() { // mount 전에 뭔가 실행하고 싶으면 여기에 기술
 
   },
