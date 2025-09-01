@@ -12,6 +12,8 @@
     <h4>지금 결제하면 20% 할인</h4>
   </div> -->
   <Discount/>
+
+  <button @click="priceSort">가격순정렬</button>
   
   <!-- 모달  -->
   <!-- <div class="black-bg" v-if="모달창열렸니 == true">
@@ -137,6 +139,19 @@ export default {
     increases() {
       this.tl
     },
+    priceSort() {
+      this.원룸들.sort(function(a,b){
+        //return a - b  // object - object 빼기 (x)
+        return a.price - b.price // oneroom.js 확인해보기
+      });
+      
+      // var array = [3,5,2];   
+      // //array.sort(); // 엄밀히 따지면, 안에 숫자가 아닌, 가나다 순 정렬중임.
+      // array.sort(function(a,b){
+      //   return a - b  // 이 줄을 실행했을 때, 음수면 a를 왼쪽으로, 양수면 오른쪽으로
+      // });
+      // console.log(array);
+    }
   },
 
   components : {
