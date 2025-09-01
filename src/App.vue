@@ -11,7 +11,7 @@
   <!-- <div class="discount">
     <h4>지금 결제하면 20% 할인</h4>
   </div> -->
-  <Discount/>
+  <Discount v-if="showDiscount == true" /> <!-- state(데이터) 만들기 -->
 
   <button @click="priceSort">가격순정렬</button>
   <button @click="sortBack">되돌리기</button>
@@ -134,6 +134,7 @@ export default {
       누른거 : 0,
       //원룸들오리지널 : 작명, (x)   // <<-- 원본 필요할 때 사용
       원룸들오리지널 : [...작명],  // (o)  array/object 데이터의 각각 별개의 사본을 만들려면 [...array자료]
+      showDiscount : true,
     }
   },
   methods : { // 함수 정의하는 곳
@@ -162,7 +163,17 @@ export default {
       this.원룸들 = [...this.원룸들오리지널];
     }
   },
+  created() {
+    // 서버에서 데이터 가져오는 코드를 작성
+  },
+  mounted() { // lifecycle hook
+    setTimeout(() => {
+      this.showDiscount = false;
+    }, 2000);
+  },
+  beforeMount() { // mount 전에 뭔가 실행하고 싶으면 여기에 기술
 
+  },
   components : {
     Discount,  // 좌우 이름이 동일한 경우 하나로만 써도 됨. Discount : Discount,   ===>   Discount,
     Modal,
