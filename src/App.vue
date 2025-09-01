@@ -24,7 +24,7 @@
       <button @click="모달창열렸니 = false">닫기</button>
     </div>
   </div> -->
-  <Modal v-bind:원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"></Modal>    <!--  :데이터이름="데이터이름"    부모 App.vue  -> 자식 Modal.vue 에게 props로 데이터 보내기 -->
+  <Modal @closeModal="모달창열렸니 = false" v-bind:원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"></Modal>    <!--  :데이터이름="데이터이름"    부모 App.vue  -> 자식 Modal.vue 에게 props로 데이터 보내기 -->
 
   <!-- if문 -->
 <!--   
