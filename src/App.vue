@@ -24,8 +24,11 @@
       <button @click="모달창열렸니 = false">닫기</button>
     </div>
   </div> -->
-  <Modal @closeModal="모달창열렸니 = false" v-bind:원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"></Modal>    <!--  :데이터이름="데이터이름"    부모 App.vue  -> 자식 Modal.vue 에게 props로 데이터 보내기 -->
 
+  <!-- <div class="start end"> -->
+  <div class="start" :class="{end : 모달창열렸니}"> <!-- class명을 조건부로 넣으려면 {클래스명 : 조건 }   //조건이 true가 되면 클래스명 적용됨 -->
+    <Modal @closeModal="모달창열렸니 = false" v-bind:원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"></Modal>    <!--  :데이터이름="데이터이름"    부모 App.vue  -> 자식 Modal.vue 에게 props로 데이터 보내기 -->
+  </div>
   <!-- if문 -->
 <!--   
   <div v-if="1 == 1">안녕하세요</div>
@@ -138,6 +141,14 @@ export default {
 </script>
 
 <style>
+.start {
+  opacity: 0;  /* 투명도  */
+  transition: all 1s;  /* 1초 동안 변화 */
+}
+.end {
+  opacity: 1;
+}
+
 body {
   margin : 0;
 }
