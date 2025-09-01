@@ -25,10 +25,17 @@
     </div>
   </div> -->
 
+  <!-- vue에서 매끈한 UI 애니메이션 주는 법(1) -->
   <!-- <div class="start end"> -->
-  <div class="start" :class="{end : 모달창열렸니}"> <!-- class명을 조건부로 넣으려면 {클래스명 : 조건 }   //조건이 true가 되면 클래스명 적용됨 -->
-    <Modal @closeModal="모달창열렸니 = false" v-bind:원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"></Modal>    <!--  :데이터이름="데이터이름"    부모 App.vue  -> 자식 Modal.vue 에게 props로 데이터 보내기 -->
-  </div>
+  <!-- <div class="start" :class="{end : 모달창열렸니}"> class명을 조건부로 넣으려면 {클래스명 : 조건 }   //조건이 true가 되면 클래스명 적용됨 -->
+    <!-- <Modal @closeModal="모달창열렸니 = false" v-bind:원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"></Modal>     :데이터이름="데이터이름"    부모 App.vue  -> 자식 Modal.vue 에게 props로 데이터 보내기 -->
+  <!-- </div> -->
+
+    <!-- vue에서 매끈한 UI 애니메이션 주는 법(2) -->
+    <transition name="fade">
+        <Modal @closeModal="모달창열렸니 = false" v-bind:원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"></Modal>    <!--  :데이터이름="데이터이름"    부모 App.vue  -> 자식 Modal.vue 에게 props로 데이터 보내기 -->
+    </transition>
+
   <!-- if문 -->
 <!--   
   <div v-if="1 == 1">안녕하세요</div>
@@ -141,6 +148,30 @@ export default {
 </script>
 
 <style>
+/* (모달)등장 애니메이션 */
+.fade-enter-from {  /* .작명-enter-from {시작스타일}  */
+  /* opacity: 0; */
+  transform: translateY(-1000px);
+}
+.fade-enter-active {   /* .작명-enter-active {transition}  */
+  transition: all 1s;
+}
+.fade-enter-to {    /* .작명-enter-to {끝날때 스타일}  */
+  /* opacity: 1; */
+  transform: translateY(0px);
+}
+
+/* (모달)퇴장 애니메이션 */
+.fade-leave-from {  /* .작명-leave-from {시작스타일}  */
+  opacity: 1;
+}
+.fade-leave-active {   /* .작명-leave-active {transition}  */
+  transition: all 1s;
+}
+.fade-leave-to {    /* .작명-leave-to {끝날때 스타일}  */
+  opacity: 0;
+}
+
 .start {
   opacity: 0;  /* 투명도  */
   transition: all 1s;  /* 1초 동안 변화 */
