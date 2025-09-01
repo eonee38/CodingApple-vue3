@@ -14,6 +14,8 @@
   <Discount/>
 
   <button @click="priceSort">가격순정렬</button>
+  <button @click="sortBack">되돌리기</button>
+
   
   <!-- 모달  -->
   <!-- <div class="black-bg" v-if="모달창열렸니 == true">
@@ -128,8 +130,10 @@ export default {
       // 신고수 : 0,
       신고수 : [0, 0, 0],
       모달창열렸니 : false,
-      원룸들 : 작명,
+      원룸들 : 작명,        // <<-- 정렬할 때 사용
       누른거 : 0,
+      //원룸들오리지널 : 작명, (x)   // <<-- 원본 필요할 때 사용
+      원룸들오리지널 : [...작명],  // (o)  array/object 데이터의 각각 별개의 사본을 만들려면 [...array자료]
     }
   },
   methods : { // 함수 정의하는 곳
@@ -151,6 +155,11 @@ export default {
       //   return a - b  // 이 줄을 실행했을 때, 음수면 a를 왼쪽으로, 양수면 오른쪽으로
       // });
       // console.log(array);
+    },
+    sortBack() {
+      // [참고] sort()는 원본을 변형함   VS.   map() filter() 등은 원본을 보존함!  
+      // this.원룸들 = this.원룸들오리지널;  <-- array를 등호로 집어넣는것이 아니고, 왼쪽 오른쪽 값을 공유하라는 의미임.. 따라서 아래코드처럼 해야함!! (주의)
+      this.원룸들 = [...this.원룸들오리지널];
     }
   },
 
