@@ -171,11 +171,11 @@ export default {
   //     this.showDiscount = false;
   //   }, 2000);
   // },
-  mounted() {
-  setInterval(() => {
-    
-    }, 1000); // 1초 마다 내부 코드 실행
-  },
+  // mounted() { // mounted() -> 컴포넌트가 mount되고 나서 뭔가 실행시키고 싶을때 쓰는 함수
+  // setInterval(() => {
+  //   this.offPrice--;
+  //   }, 1000); // 1초 마다 내부 코드 실행
+  // },
 
   beforeMount() { // mount 전에 뭔가 실행하고 싶으면 여기에 기술
 
