@@ -57,6 +57,11 @@
       원룸들 : Array,
       누른거 : Number,
       모달창열렸니 : Boolean,
+    },
+    beforeUpdate() {
+      if(this.month == 2) {
+        alert('2개월은 거래 불가함. 3개월부터 입력하세요~');
+      }
     }
   }
 </script>
