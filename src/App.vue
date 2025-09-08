@@ -61,7 +61,10 @@
 <!-- </div> -->
 
 <!--  <Card @click="모달창열렸니 = true" :건수="원룸들[i]" v-for="(작명,i) in 원룸들" :key="작명"></Card> -->  <!-- 이벤트 버블링 현상으로 @click 이벤트 동작됨!-->
-  <Card @openModal="모달창열렸니 = true; 누른거 = $event" 
+  
+<!-- @openModal="..." 이렇게 쓰는 건 사용자 정의 이벤트(custom event)임.
+ 즉, click이나 input 같은 브라우저 기본 이벤트가 아니라, 개발자가 자식 컴포넌트(Card.vue) 안에서 $emit('openModal')로 직접 만든 이벤트임. -->
+<Card @openModal="모달창열렸니 = true; 누른거 = $event" 
   :건수="원룸들[i]" v-for="(작명,i) in 원룸들" :key="작명"></Card>  <!-- 자식이 보내 데이터는 $event 변수에 담겨있음  - 커스텀 이벤트  -->
   <!-- <Card :건수="원룸들[1]"></Card>
   <Card :건수="원룸들[2]"></Card>
